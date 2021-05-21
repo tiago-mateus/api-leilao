@@ -8,7 +8,7 @@ module.exports = {
         .from('bids AS a')
             .join('users AS b', 'a.idUser', '=', 'b.id')
             .join('gifts AS c', 'a.idGift', '=', 'c.id')
-        .where('c.id', idGift);
+        .where('c.id', idGift).orderBy('a.valor', 'desc');
         return response.json(historic);
     },
 
