@@ -25,7 +25,7 @@ routes.put('/editarPrenda/:id', multer(multerConfig).single('file'), giftProfile
 
 routes.get('/bid', bidController.index);
 routes.post('/bid', bidController.create);
-routes.delete('/bid', bidController.delete);
+routes.delete('/bid', bidController.delete);    
 
 routes.get('/historicBidsPerGift/:idGift', bidSpecificController.historicBidsPerGift);
 routes.get('/maxBid/:idGift', bidSpecificController.maxBid);
