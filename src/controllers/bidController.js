@@ -8,15 +8,19 @@ module.exports = {
     },
 
     async create(request, response) {
-        const { idGift, valor} = request.body;
+        const { idGift, value} = request.body;
+        const valor = value;
+        
         const idUser = request.headers.authorization;
-        await connection('bids').insert({
-            idUser,
-            idGift,
-            valor,
-        });
+        
+            await connection('bids').insert({
+                idUser,
+                idGift,
+                valor,
+            });
 
-        return response.json();
+            return response.json();
+
     },
     
     async delete(request, response) {

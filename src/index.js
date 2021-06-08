@@ -6,6 +6,8 @@ const routes = require('./routes');
 const http = require('http').createServer(app);
 const axios = require('axios');
 const giftController = require('./controllers/giftController');
+const path = require('path');
+
 // const io = require('socket.io')(http, {
 //     cors: { origin: "*" }
 // });
@@ -13,8 +15,11 @@ const giftController = require('./controllers/giftController');
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 app.use(routes);
-app.listen(process.env.PORT || 3333);
+app.use("/files", express.static(path.resolve(__dirname, "..", "tmp", "uploads")));
+app.listen(3333);
+
 // let interval;
 // let interval2;
 

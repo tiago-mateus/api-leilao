@@ -8,21 +8,23 @@ module.exports = {
     },
 
     async create(request, response) {
-        const { nome, valorInicial, caminhoImg} = request.body;
+        const { nome, valor: valorInicial } = request.body;
+        const { location: caminhoImg = ''} =  request.file;
         const leiloando = false;
+
         await connection('gifts').insert({
             nome,
             valorInicial,
             caminhoImg,
             leiloando,
-    });
+        });
 
         return response.json();
     },
-    
+
     async delete(request, response) {
         const { id } = request.params;
-
+        console.log(id);
         await connection('gifts').where('id', id).delete();
 
         return response.status(204).send();
