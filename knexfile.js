@@ -1,5 +1,5 @@
 // Update with your config settings.
-require('dotenv/config');
+
 module.exports = {
 
   development: {
@@ -8,9 +8,10 @@ module.exports = {
       filename: './src/database/db.sqlite'
     },
     migrations:{
-      directory: './src/database/migrations'
+      filename: 'knex_migrations',
+      directoru: `${__dirname}/src/database/migrations`
     },
-    useNullAsDefault: true,
+    "useNullAsDefault": true
   },
 
   staging: {
@@ -30,17 +31,23 @@ module.exports = {
   },
 
   production: {
-    client: 'pg',
-    connection: process.env.DATABASE_URL,
+    client: 'postgresql',
+    connection: {
+      port: process.env.DATABASE_PORT,
+      host: process.env.DATABASE_HOST,
+      database: process.env.DATABASE_NAME,
+      user: process.env.DATABASE_USER,
+      password: process.env.DATABASE_ACCESS_KEY,
+      ssl: true,
+      ssl: { rejectUnauthorized: false },
+    },
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
-      directory: './src/database/migrations',
       tableName: 'knex_migrations'
     }
-  },
-  useNullAsDefault: true,
+  }
 
 };

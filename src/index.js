@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(routes);
 app.use("/files", express.static(path.resolve(__dirname, "..", "tmp", "uploads")));
-app.listen(3333);
+app.listen(3333, () => console.log("Server is running"));
 
 // let interval;
 // let interval2;
