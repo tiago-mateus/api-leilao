@@ -33,5 +33,6 @@ routes.put('/leiloar/:id', giftProfileController.leiloar);
 routes.get('/salegift', giftProfileController.salegift);
 routes.get('/salegiftadm', giftProfileController.salegiftadm);
 routes.put('/arrematar/:idGift', giftProfileController.arrematar);
+routes.get('/live', giftProfileController.bidsGiftLive);
 
 module.exports = routes;
