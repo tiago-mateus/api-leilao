@@ -40,6 +40,7 @@ module.exports = {
       directory: './src/database/migrations',
       tableName: 'knex_migrations'
     }
-  }
+  },
+  useNullAsDefault: true,
 
 };
