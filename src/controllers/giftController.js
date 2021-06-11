@@ -1,5 +1,10 @@
 const connection = require('../database/connection');
 
+const  deleteBids = async (id) =>{
+    console.log(id);
+    await connection('bids').where('idGift', id).del();
+    await connection('gifts').where('id', id).del();
+}
 module.exports = {
 
     async index(request, response) {
@@ -22,10 +27,11 @@ module.exports = {
         return response.json();
     },
 
+
     async delete(request, response) {
         const { id } = request.params;
-        console.log(id);
-        await connection('gifts').where('id', id).delete();
+
+        deleteBids(id);
 
         return response.status(204).send();
     }

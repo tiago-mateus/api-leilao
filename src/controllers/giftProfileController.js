@@ -25,7 +25,7 @@ module.exports = {
         .from('bids AS a')
             .join('users AS b', 'a.idUser', '=', 'b.id')
             .join('gifts AS c', 'a.idGift', '=', 'c.id')
-        .where('c.leiloando', 1).whereNull('c.arrematado').orderBy('a.valor', 'desc').limit((5*gifts.length));
+        .where('c.leiloando', 1).whereNull('c.arrematado').orderBy('a.valor', 'desc');
 
         console.log();
 

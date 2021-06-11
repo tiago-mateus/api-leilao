@@ -6,6 +6,7 @@ const bidController = require('./controllers/bidController');
 const bidSpecificController = require('./controllers/bidSpecificController');
 const giftProfileController = require('./controllers/giftProfileController');
 const sessions = require('./controllers/sessionController');
+const live = require('./controllers/liveController');
 const routes = express.Router();
 const multer = require('multer');
 const multerConfig = require('./config/multer');
@@ -17,6 +18,10 @@ routes.post('/sessions', sessions.create);
 routes.get('/user', userController.index);
 routes.post('/user', userController.create);
 routes.get('/userInfo/:id', userController.userInfo);
+
+routes.get('/live', live.index);
+routes.put('/live', live.update);
+
 
 routes.get('/gift', giftController.index);
 routes.post('/gift', multer(multerConfig).single('file'), giftController.create);
