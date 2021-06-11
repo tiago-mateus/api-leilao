@@ -19,8 +19,8 @@ routes.get('/user', userController.index);
 routes.post('/user', userController.create);
 routes.get('/userInfo/:id', userController.userInfo);
 
-routes.get('/live', live.index);
-routes.put('/live', live.update);
+routes.get('/liveUrl', live.index);
+routes.put('/liveUrl', live.update);
 
 
 routes.get('/gift', giftController.index);

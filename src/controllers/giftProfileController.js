@@ -16,18 +16,15 @@ module.exports = {
         let data = [{"gift": gifts, hist: histor}];
         return response.json(data);
     },  
-    async bidsGiftLive(request, response) {
 
+     async bidsGiftLive(request, response) {
         let gifts = await connection('gifts').where('leiloando', 1).whereNull('arrematado').select('*');
 
-        
         let histor = await connection.select('b.apelido','a.valor', 'a.idGift')
         .from('bids AS a')
             .join('users AS b', 'a.idUser', '=', 'b.id')
             .join('gifts AS c', 'a.idGift', '=', 'c.id')
         .where('c.leiloando', 1).whereNull('c.arrematado').orderBy('a.valor', 'desc');
-
-        console.log();
 
 
 
